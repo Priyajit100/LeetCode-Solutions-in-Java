@@ -1,0 +1,23 @@
+class Solution {
+    public int[] numberGame(int[] nums) {
+    PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+for(int i=0;i<nums.length;i++){
+    priorityQueue.offer(nums[i]);
+}
+int r[]=new int[nums.length];
+int j=0;
+Stack<Integer>s=new Stack<Integer>();
+  while (!priorityQueue.isEmpty()) {
+            int element = priorityQueue.poll();
+          s.add(element);
+          if(s.size()==2){
+              while(!s.isEmpty()){
+                  r[j]=s.pop();
+                  j++;
+              }
+          }
+        }
+return r;
+     
+    }
+}

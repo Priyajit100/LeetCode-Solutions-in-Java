@@ -1,0 +1,13 @@
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int r=0;
+        int count[]=new int[101];
+        for(int n:nums){
+            count[n]++;
+        }
+        for(int n:count){
+            r+=(n*(n-1))/2;
+        }
+        return r;
+    }
+}

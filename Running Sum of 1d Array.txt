@@ -1,0 +1,9 @@
+class Solution {
+    public int[] runningSum(int[] nums1) {
+         for(int i=1;i<nums1.length;i++){
+            nums1[i]=nums1[i-1]+nums1[i];
+
+        }
+        return nums1;
+    }
+}
