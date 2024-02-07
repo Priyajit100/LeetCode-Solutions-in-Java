@@ -1,0 +1,59 @@
+class Solution {
+    public String frequencySort(String s) {
+        /**
+          "tree"
+
+           "eert"
+               s
+                e
+
+            (s,e-1) -> []pq , sorts based on len of string 
+         
+          cccaaa
+             s
+                e
+
+
+          ccc   
+
+             
+         */
+         char[] sortedString = s.toCharArray();
+         
+         Arrays.sort(sortedString);
+
+         s = new String(sortedString);
+
+         PriorityQueue<String> maxHeap = new PriorityQueue<>((a , b) -> b.length() - a.length());
+
+         int start = 0;
+         int end = 0;
+
+         int sLen = s.length();
+
+         while(end <= sLen){
+             if(end == sLen){
+                 maxHeap.add(s.substring(start , end));
+                 break;
+             }
+
+             if(s.charAt(end) != s.charAt(start)){
+                 maxHeap.add(s.substring(start , end));
+                 start = end;
+             }else{
+                 end++;
+             }
+         }
+
+
+         StringBuilder output = new StringBuilder();
+
+         while(!maxHeap.isEmpty()){
+             output.append(maxHeap.poll());
+         }
+
+
+         return output.toString();
+
+    }
+}
